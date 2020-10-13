@@ -1,0 +1,60 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+mat-card {
+  height: 550px;
+  width: 750px;
+}
+mat-card-title {
+  color: yellowgreen;
+}
+mat-card-content {
+  margin-left: -75px;
+  margin-top: 40px;
+}
+
+::ng-deep .mat-form-field-flex > .mat-form-field-infix {
+  padding: 0.4em 0px !important;
+}
+::ng-deep .mat-form-field-label-wrapper {
+  top: -1.5em;
+  width: 56%;
+}
+
+.input-field {
+  margin-right: 15px;
+  width: 38%;
+}
+
+.email-input {
+  top: -0.2em;
+  width: 79%;
+}
+
+.password-field {
+  width: 33.55%;
+  margin-right: 15px;
+  margin-top: 30px;
+}
+mat-icon {
+  margin-top: 40px;
+  opacity: 60%;
+}
+
+img {
+  margin-top: 60px;
+}
+.button-container {
+  color: white;
+  margin-top: 150px;
+}
+.sign {
+  color: blue;
+}
+.next {
+  width: 80px;
+  background-color: blue;
+  color: white;
+}
