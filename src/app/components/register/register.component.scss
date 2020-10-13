@@ -17,6 +17,7 @@ mat-card {
   mat-card-subtitle {
     color: $blackColor;
     font-size: large;
+    margin-bottom: 30px;
   }
 
   mat-card-content {
@@ -26,7 +27,10 @@ mat-card {
       margin-top: 10px;
       opacity: 60%;
     }
-
+    span {
+      margin-top: -10px;
+      font-size: 12px;
+    }
     .button-container {
       color: $whiteColor;
       margin-top: 100px;

@@ -3,6 +3,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { RxwebValidators } from '@rxweb/reactive-form-validators';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserService } from 'src/app/services/user.service/user.service';
+import { Router, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -14,7 +15,8 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private snackBar: MatSnackBar,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) {}
 
   firstName = new FormControl('', [
@@ -92,6 +94,7 @@ export class RegisterComponent implements OnInit {
             this.snackBar.open('User Register Sucessfully', '', {
               duration: 2000,
             });
+            this.router.navigate(['/login']);
           },
           (err) => {
             this.snackBar.open('User Not Register.. someythig went wrong', '', {
