@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { RxwebValidators } from '@rxweb/reactive-form-validators';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { UserService } from 'src/app/services/user.service/user.service';
 
 @Component({
   selector: 'app-register',
@@ -11,7 +12,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class RegisterComponent implements OnInit {
   hide = true;
 
-  constructor(private snackBar: MatSnackBar) {}
+  constructor(
+    private snackBar: MatSnackBar,
+    private userService: UserService
+  ) {}
 
   firstName = new FormControl('', [
     Validators.pattern('[a-zA-Z ]*'),
@@ -33,6 +37,7 @@ export class RegisterComponent implements OnInit {
   ]);
 
   confirmPassword = new FormControl('', [
+    Validators.required,
     RxwebValidators.compare({ fieldName: 'password' }),
   ]);
 
@@ -63,13 +68,42 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.password.value === this.confirmPassword.value) {
-      let userDetails = {
-        firstName: this.firstName.value,
-        lastName: this.lastName.value,
-        emailId: this.emailId.value,
-        password: this.password.value,
-      };
+    try {
+      if (
+        this.firstName.value == '' ||
+        this.lastName.value == '' ||
+        this.password.value == '' ||
+        this.confirmPassword.value == ''
+      ) {
+        this.snackBar.open('All Mandatory fields ', '', {
+          duration: 2000,
+        });
+        throw ' Fields can not empty ';
+      }
+      if (this.password.value === this.confirmPassword.value) {
+        let userDetails = {
+          firstName: this.firstName.value,
+          lastName: this.lastName.value,
+          emailId: this.emailId.value,
+          password: this.password.value,
+        };
+        this.userService.register(userDetails).subscribe(
+          (res) => {
+            this.snackBar.open('User Register Sucessfully', '', {
+              duration: 2000,
+            });
+          },
+          (err) => {
+            this.snackBar.open('User Not Register.. someythig went wrong', '', {
+              duration: 2000,
+            });
+          }
+        );
+      }
+    } catch (error) {
+      this.snackBar.open(error, '', {
+        duration: 2000,
+      });
     }
   }
   ngOnInit(): void {}
