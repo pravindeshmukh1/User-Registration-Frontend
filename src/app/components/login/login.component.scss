@@ -2,16 +2,33 @@ mat-card {
   height: 500px;
   width: 450px;
 }
+$blueColor: blue;
+$whiteColor: white;
+$blackColor: black;
 
 .button-container {
-  color: white;
+  color: $whiteColor;
   margin-top: 100px;
   .create {
-    color: blue;
+    color: $blueColor;
   }
   .signIn {
     width: 80px;
-    background-color: blue;
-    color: white;
+    background-color: $blueColor;
+    color: $whiteColor;
   }
+}
+
+mat-card-title {
+  color: $blueColor;
+  font-size: large;
+  margin-top: 20px;
+  font-size: large;
+}
+
+mat-card-subtitle {
+  color: $blackColor;
+  font-size: small;
+  margin-top: 20px;
+  margin-bottom: 30px;
 }

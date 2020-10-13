@@ -49,12 +49,12 @@ export class RegisterComponent implements OnInit {
       : 'First Name should be minimum of 3 charatere';
   }
   getLastNameErrorMessage() {
-    return this.firstName.hasError('required')
+    return this.lastName.hasError('required')
       ? 'Enter last name'
       : 'Last Name should be minimum of 3 charatere';
   }
   getEmailIdErrorMessage() {
-    return this.firstName.hasError('required')
+    return this.emailId.hasError('required')
       ? 'Choose a Email address'
       : 'Sorry. enter valid Email ID';
   }
@@ -74,12 +74,10 @@ export class RegisterComponent implements OnInit {
       if (
         this.firstName.value == '' ||
         this.lastName.value == '' ||
+        this.emailId.value == '' ||
         this.password.value == '' ||
         this.confirmPassword.value == ''
       ) {
-        this.snackBar.open('All Mandatory fields ', '', {
-          duration: 2000,
-        });
         throw ' Fields can not empty ';
       }
       if (this.password.value === this.confirmPassword.value) {

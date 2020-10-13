@@ -10,4 +10,7 @@ export class UserService {
   register(registerData) {
     return this.httpService.post('/register', registerData);
   }
+  logIn(loginData) {
+    return this.httpService.post('/login', loginData);
+  }
 }
